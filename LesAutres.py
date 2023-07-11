@@ -103,7 +103,16 @@ for ch in message:
     encoded_message += new_char     
 """
 """
+FIBONACCI SEQUENCE
 
 
+def fibonacci(n):
+   if n <= 1:
+       return n
+   else:
+       return(fibonacci(n-1) + fibonacci(n-2))
 
+nterms = int(input)
+for i in range(nterms):
+    print(f"Fibonacci sequence:{fibonacci(i)}")
 """
