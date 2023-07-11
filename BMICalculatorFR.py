@@ -4,7 +4,7 @@ weight = float(input("Quel est ton poids? (kg) : "))
 height = float(input("Quelle est ta hauteur? (cm) : "))
 bmi = float(weight / ((height * 0.01) * (height * 0.01)))
 
-while bmi > 0:
+if bmi > 0:
     if bmi < 18.5:
         print("Vous etes Trop maigre!!!!")
     elif bmi < 25:
@@ -15,6 +15,5 @@ while bmi > 0:
         print("Vous etes obèse!!!!")
     else:
         print("Vous avez obésité morbide!! C'est dangereux!!")
-    break
 
 # J'aime le programming et Le Python
