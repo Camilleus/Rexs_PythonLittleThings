@@ -120,6 +120,7 @@ for i in range(nterms):
 Factorial / Silnia
 
 
+
 def factorial(n):
     if n <= 1:
         return 1
@@ -127,4 +128,59 @@ def factorial(n):
         return n * factorial(n - 1)
 
 factorial(5)# 120
+
+"""
+
+
+"""
+articles_dict = [
+    {
+        "title": "Endless ocean waters.",
+        "author": "Jhon Stark",
+        "year": 2019,
+    },
+    {
+        "title": "Oceans of other planets are full of silver",
+        "author": "Artur Clark",
+        "year": 2020,
+    },
+    {
+        "title": "An ocean that cannot be crossed.",
+        "author": "Silver Name",
+        "year": 2021,
+    },
+    {
+        "title": "The ocean that you love.",
+        "author": "Golden Gun",
+        "year": 2021,
+    },
+]
+
+def find_articles(key, letter_case=False):
+    founded_articles = []
+    for article in articles_dict:
+        title = article['title']
+        author = article['author']
+        year = article['year']
+
+        if not letter_case:
+            key = key.lower()
+            title_lower = title.lower()
+            author_lower = author.lower()
+        else:
+            title_lower = title
+            author_lower = author
+
+        if key in title_lower or key in author_lower:
+            founded_articles.append({
+                'author': author,
+                'title': title,
+                'year': year
+            })
+
+    if not founded_articles:
+        print("Not found")
+
+    return founded_articles
+
 """
