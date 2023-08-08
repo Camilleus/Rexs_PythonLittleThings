@@ -210,3 +210,14 @@ def find_word(text, word):
 
     return result_dict
 """
+"""
+import re
+
+
+def replace_spam_words(text, spam_words):
+    for word in spam_words:
+        word_pattern = re.compile(rf'\b{re.escape(word)}\b', re.IGNORECASE)
+        text = word_pattern.sub('*' * len(word), text)
+    return text
+
+"""
