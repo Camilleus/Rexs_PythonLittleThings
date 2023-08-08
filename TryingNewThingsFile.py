@@ -2,8 +2,8 @@ import re
 
 
 def find_all_phones(text):
-    phone_pattern = re.compile(r'\+380\(\d{2}\)777-\d{1,2}-\d{2,3}')
-    result = phone_pattern.findall(text)
+    all_phones = re.compile(r'\+380\(\d{2}\)777-\d{1,2}-\d{2,3}')
+    result = all_phones.findall(text)
     return result
 
 
