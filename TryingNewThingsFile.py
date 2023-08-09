@@ -1,12 +1,11 @@
-import re
+def write_employees_to_file(employee_list, path):
+    with open(path, "w") as file:
+        for department in employee_list:
+            for employee in department:
+                file.write(employee + "\n")
+    file.close()
 
 
-def find_all_phones(text):
-    all_phones = re.compile(r'\+380\(\d{2}\)777-\d{1,2}-\d{2,3}')
-    result = all_phones.findall(text)
-    return result
-
-
-text = "Irma +380(67)777-7-771 second +380(67)777-77-77 aloha a@test.com abc111@test.com.net +380(67)111-777-777+380(67)777-77-787"
-phones = find_all_phones(text)
-print(phones)
+employee_list = [['Robert Stivenson,28',
+                  'Alex Denver,30'], ['Drake Mikelsson,19']]
+write_employees_to_file(employee_list, "employee_data.txt")
