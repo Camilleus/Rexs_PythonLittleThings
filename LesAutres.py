@@ -242,6 +242,17 @@ print(phones)
 
 """
 """
+import re
+
+
+def find_all_links(text):
+    result = []
+    pattern = r'https?://(?:[a-zA-Z0-9_-]+\.)*[a-zA-Z0-9_-]+(?<!\.)\.[a-zA-Z]{2,}'
+    iterator = re.finditer(pattern, text)
+    for match in iterator:
+        result.append(match.group())
+    return result"""
+"""
 def write_employees_to_file(employee_list, path):
     with open(path, "w") as file:
         for department in employee_list:
