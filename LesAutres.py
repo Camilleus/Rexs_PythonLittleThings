@@ -77,8 +77,6 @@ while bigger % gcd != 0 :
             print(gcd)
         else:
             print(gcd)
-
-    
 """
 """
 CAESAR'S CODE
@@ -130,8 +128,6 @@ def factorial(n):
 factorial(5)# 120
 
 """
-
-
 """
 articles_dict = [
     {
@@ -326,4 +322,63 @@ source_file_path = "source.txt"
 output_file_path = "output.txt"
 sanitize_file(source_file_path, output_file_path)
 print("Plik został oczyszczony i zapisany do", output_file_path)
+"""
+"""
+def save_applicant_data(source, output):
+    with open(output, 'w') as output_file:
+        for applicant in source:
+            name = applicant["name"]
+            specialty = applicant["specialty"]
+            math_score = applicant["math"]
+            lang_score = applicant["lang"]
+            eng_score = applicant["eng"]
+            output_line = f"{name},{specialty},{math_score},{lang_score},{eng_score}\n"
+            output_file.write(output_line)
+
+# Przykład użycia:
+applicant_data = [
+    {
+        "name": "Kovalchuk Oleksiy",
+        "specialty": 301,
+        "math": 175,
+        "lang": 180,
+        "eng": 155,
+    },
+    {
+        "name": "Ivanchuk Boryslav",
+        "specialty": 101,
+        "math": 135,
+        "lang": 150,
+        "eng": 165,
+    },
+    {
+        "name": "Karpenko Dmitro",
+        "specialty": 201,
+        "math": 155,
+        "lang": 175,
+        "eng": 185,
+    },
+]
+output_file_path = "output.txt"
+save_applicant_data(applicant_data, output_file_path)
+print("Dane kandydatów zostały zapisane do pliku", output_file_path)
+"""
+"""
+def is_equal_string(utf8_string, utf16_string):
+    decoded_utf8 = utf8_string.encode('utf-8').decode('utf-8')
+    decoded_utf16 = utf16_string.encode('utf-16').decode('utf-16')
+    
+    return decoded_utf8 == decoded_utf16
+
+# Przykład użycia:
+utf8_string = "Hello, world!"
+utf16_string = "Hello, world!".encode('utf-16').decode('utf-16')
+result = is_equal_string(utf8_string, utf16_string)
+print(result)  # Oczekiwane wyjście: True
+"""
+"""
+def is_equal_string(utf8_string, utf16_string):
+    utf8_normalized = utf8_string.decode('utf-8').casefold().encode('utf-8')
+    utf16_normalized = utf16_string.decode('utf-16').casefold().encode('utf-8')
+    return utf8_normalized == utf16_normalized
 """
