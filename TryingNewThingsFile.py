@@ -1,4 +1,7 @@
-def is_equal_string(utf8_string, utf16_string):
-    utf8_normalized = utf8_string.decode('utf-8').casefold().encode('utf-8')
-    utf16_normalized = utf16_string.decode('utf-16').casefold().encode('utf-8')
-    return utf8_normalized == utf16_normalized
+import re
+
+
+def find_all_phones(text):
+    result re.findall (r"\+380\([0-9]{2}\)[0-9]{3}\-[0-9]{1}\-[0-9]{3}|\+380\([0-9]
+{2}\)[0-9]{3}\-[0-9]{2}\-[0-9]{2}", text)
+    return result
