@@ -1,11 +1,4 @@
-def write_employees_to_file(employee_list, path):
-    with open(path, "w") as file:
-        for department in employee_list:
-            for employee in department:
-                file.write(employee + "\n")
-    file.close()
-
-
-employee_list = [['Robert Stivenson,28',
-                  'Alex Denver,30'], ['Drake Mikelsson,19']]
-write_employees_to_file(employee_list, "employee_data.txt")
+def is_equal_string(utf8_string, utf16_string):
+    utf8_normalized = utf8_string.decode('utf-8').casefold().encode('utf-8')
+    utf16_normalized = utf16_string.decode('utf-16').casefold().encode('utf-8')
+    return utf8_normalized == utf16_normalized
