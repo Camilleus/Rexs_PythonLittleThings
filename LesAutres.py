@@ -382,3 +382,14 @@ def is_equal_string(utf8_string, utf16_string):
     utf16_normalized = utf16_string.decode('utf-16').casefold().encode('utf-8')
     return utf8_normalized == utf16_normalized
 """
+"""
+def save_credentials_users(path, users_info):
+    with open(path, 'wb') as file:
+        for username, password in users_info.items():
+            user_data = f"{username}:{password}\n"
+            file.write(user_data.encode())
+
+# Przykład użycia:
+users_info = {'andry': 'uyro18890D', 'steve': 'oppjM13LL9e'}
+save_credentials_users('users.txt', users_info)
+"""
