@@ -257,3 +257,73 @@ employee_list = [['Robert Stivenson,28',
                   'Alex Denver,30'], ['Drake Mikelsson,19']]
 write_employees_to_file(employee_list, "employee_data.txt")
 """
+"""
+def add_employee_to_file(record, path):
+    file = open(path, 'a')  # Otwieranie pliku w trybie dodawania (append)
+    file.write(record + '\n')  # Dodawanie nowego pracownika i nowej linii
+    file.close()
+
+# Przykład użycia:
+add_employee_to_file("Drake Mikelsson,19", "employee_data.txt")
+"""
+"""
+def get_cats_info(path):
+    cats_info = []
+
+    with open(path, 'r') as file:
+        for line in file:
+            parts = line.strip().split(',')
+            cat_info = {
+                "id": parts[0],
+                "name": parts[1],
+                "age": parts[2]
+            }
+            cats_info.append(cat_info)
+
+    return cats_info
+
+# Przykład użycia:
+path = "cats_data.txt"
+cats_data = get_cats_info(path)
+print(cats_data)
+"""
+"""
+def get_recipe(path, search_id):
+    with open(path, 'r') as file:
+        for line in file:
+            parts = line.strip().split(',')
+            if parts[0] == search_id:
+                recipe = {
+                    "id": parts[0],
+                    "name": parts[1],
+                    "ingredients": parts[2:]
+                }
+                return recipe
+    
+    return None
+
+# Przykład użycia:
+path = "recipes.txt"
+search_id = "60b90c3b13067a15887e1ae4"
+recipe = get_recipe(path, search_id)
+if recipe:
+    print(recipe)
+else:
+    print("Przepis o podanym ID nie został znaleziony.")
+
+"""
+"""
+def sanitize_file(source, output):
+    with open(source, 'r') as source_file:
+        content = source_file.read()
+        sanitized_content = ''.join([char for char in content if not char.isdigit()])
+    
+    with open(output, 'w') as output_file:
+        output_file.write(sanitized_content)
+
+# Przykład użycia:
+source_file_path = "source.txt"
+output_file_path = "output.txt"
+sanitize_file(source_file_path, output_file_path)
+print("Plik został oczyszczony i zapisany do", output_file_path)
+"""
