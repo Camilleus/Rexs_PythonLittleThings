@@ -422,3 +422,25 @@ credentials = ['andry:uyro18890D', 'steve:oppjM13LL9e']
 encoded_credentials = encode_data_to_base64(credentials)
 print(encoded_credentials)
 """
+"""
+import shutil
+
+def create_backup(path, file_name, employee_residence):
+    file_path = f"{path}/{file_name}"
+    
+    with open(file_path, 'wb') as file:
+        for employee, residence in employee_residence.items():
+            line = f"{employee} {residence}\n"
+            file.write(line.encode())
+    
+    shutil.make_archive(f"{path}/backup_folder", 'zip', path)
+
+    return f"{path}/backup_folder.zip"
+
+# Przykład użycia:
+employee_residence = {'Michael': 'Canada', 'John': 'USA', 'Liza': 'Australia'}
+backup_path = "/path/to/backup"
+backup_file = "employee_residence.txt"
+backup_archive = create_backup(backup_path, backup_file, employee_residence)
+print("Backup archive:", backup_archive)
+"""
