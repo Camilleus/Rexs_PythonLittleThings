@@ -425,6 +425,8 @@ print(encoded_credentials)
 """
 import shutil
 
+
+
 def create_backup(path, file_name, employee_residence):
     file_path = f"{path}/{file_name}"
     
@@ -433,9 +435,10 @@ def create_backup(path, file_name, employee_residence):
             line = f"{employee} {residence}\n"
             file.write(line.encode())
     
-    shutil.make_archive(f"{path}/backup_folder", 'zip', path)
+    backup_folder = f"{path}/backup_folder"
+    shutil.make_archive('backup_folder', 'zip', path)
 
-    return f"{path}/backup_folder.zip"
+    return f"{backup_folder}.zip"
 
 # Przykład użycia:
 employee_residence = {'Michael': 'Canada', 'John': 'USA', 'Liza': 'Australia'}
