@@ -393,3 +393,16 @@ def save_credentials_users(path, users_info):
 users_info = {'andry': 'uyro18890D', 'steve': 'oppjM13LL9e'}
 save_credentials_users('users.txt', users_info)
 """
+"""
+def get_credentials_users(path):
+    credentials = []
+    with open(path, 'rb') as file:
+        lines = file.readlines()
+        for line in lines:
+            credentials.append(line.decode().strip())
+    return credentials
+
+# Przykład użycia:
+credentials = get_credentials_users('users.txt')
+print(credentials)
+"""
