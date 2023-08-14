@@ -406,3 +406,19 @@ def get_credentials_users(path):
 credentials = get_credentials_users('users.txt')
 print(credentials)
 """
+"""
+import base64
+
+def encode_data_to_base64(data):
+    encoded_data = []
+    for item in data:
+        username, password = item.split(':')
+        encoded_item = base64.b64encode(f'{username}:{password}'.encode()).decode()
+        encoded_data.append(encoded_item)
+    return encoded_data
+
+# Przykład użycia:
+credentials = ['andry:uyro18890D', 'steve:oppjM13LL9e']
+encoded_credentials = encode_data_to_base64(credentials)
+print(encoded_credentials)
+"""
