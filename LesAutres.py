@@ -447,3 +447,15 @@ backup_file = "employee_residence.txt"
 backup_archive = create_backup(backup_path, backup_file, employee_residence)
 print("Backup archive:", backup_archive)
 """
+"""
+import shutil
+
+def unpack(archive_path, path_to_unpack):
+    shutil.unpack_archive(archive_path, path_to_unpack)
+
+# Przykład użycia:
+archive_path = "/path/to/backup/backup_folder.zip"
+path_to_unpack = "/path/to/extracted_data"
+unpack(archive_path, path_to_unpack)
+print("Archive unpacked successfully.")
+"""
