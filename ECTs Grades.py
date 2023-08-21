@@ -26,23 +26,19 @@ grades_descriptions = {
     "6": "Very good",
     "7": "Perfectly"
 }
+def get_grade(ects_grade):
+    for grade, points in grades_points.items():
+        if ects_grade == grades_ects[grade]:
+            return int(grade)
+    return None
+def get_description(ects_grade):
+    for grade, description in grades_descriptions.items():
+        if ects_grade == grades_ects[grade]:
+            return description
+    return None
 
 ects_grade = "C"
 grade = get_grade(ects_grade)
 description = get_description(ects_grade)
 print(f"Grade: {grade}")
 print(f"Grade Description: {description}")
-
-
-def get_grade(ects_grade):
-    for grade, points in grades_points.items():
-        if ects_grade == grades_ects[grade]:
-            return int(grade)
-    return None
-
-
-def get_description(ects_grade):
-    for grade, description in grades_descriptions.items():
-        if ects_grade == grades_ects[grade]:
-            return description
-    return None
