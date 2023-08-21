@@ -514,4 +514,18 @@ def capital_text(text):
     text = text.capitalize()
     text = re.sub(r'([.!?]\s*)([a-z])',lambda m: m.group(1) + m.group(2).upper(), text)
 
-    return text"""
+    return text
+"""
+"""
+def solve_riddle(riddle, word_length, start_letter, reverse=False):
+    if reverse:
+        riddle = riddle[::-1]
+    
+    for i in range(len(riddle) - word_length + 1):
+        if riddle[i] == start_letter:
+            candidate = riddle[i:i+word_length]
+            if candidate.isalpha() and candidate.islower():
+                return candidate
+    
+    return ""
+"""
