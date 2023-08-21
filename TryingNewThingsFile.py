@@ -1,10 +1,14 @@
-def is_integer(s):
-    s = s.strip()
-    if len(s) == 0:
-        return False
-    if s[0] in ['+', '-']:
-        s = s[1:]
-    if s.isdigit():
-        return True
-    else:
-        return False
+import re
+
+
+def capital_text(text):
+    text = text.capitalize()
+    text = re.sub(r'([.!?]\s*)([a-z])',
+                  lambda m: m.group(1) + m.group(2).upper(), text)
+
+    return text
+
+
+text = "lubie jest przykład. co dalej? okej! tak to jest."
+capitalized_text = capital_text(text)
+print(capitalized_text)
