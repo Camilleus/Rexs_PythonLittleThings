@@ -495,3 +495,15 @@ def do_setup(args_dict, requires, entry_points):
           entry_points={'console_scripts': ['helloworld = useful.some_code:hello_world']}
           )
 """
+"""
+def is_integer(s):
+    s = s.strip()
+    if len(s) == 0:
+        return False
+    if s[0] in ['+', '-']:
+        s = s[1:]
+    if s.isdigit():
+        return True
+    else:
+        return False
+"""
