@@ -1,7 +1,7 @@
 text = str(input())
 word = str(input())
 
-def search()
+def search():
  if word in text:
   return('Word found')
  else:
