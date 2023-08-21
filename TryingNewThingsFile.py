@@ -1,7 +1,10 @@
-import re
-
-
-def find_all_phones(text):
-    result re.findall (r"\+380\([0-9]{2}\)[0-9]{3}\-[0-9]{1}\-[0-9]{3}|\+380\([0-9]
-{2}\)[0-9]{3}\-[0-9]{2}\-[0-9]{2}", text)
-    return result
+def is_integer(s):
+    s = s.strip()
+    if len(s) == 0:
+        return False
+    if s[0] in ['+', '-']:
+        s = s[1:]
+    if s.isdigit():
+        return True
+    else:
+        return False
