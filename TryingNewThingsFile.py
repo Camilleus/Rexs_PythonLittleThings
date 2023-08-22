@@ -6,6 +6,8 @@ def data_preparation(data):
             sublist.remove(min(sublist))
             sublist.remove(max(sublist))
             result.extend(sublist)
+        else:
+            sublist.extend(sublist)
 
     result.sort(reverse=True)
     return result
