@@ -1,14 +1,11 @@
-import re
+def data_preparation(data):
+    result = []
 
+    for sublist in data:
+        if len(sublist) > 2:
+            sublist.remove(min(sublist))
+            sublist.remove(max(sublist))
+            result.extend(sublist)
 
-def capital_text(text):
-    text = text.capitalize()
-    text = re.sub(r'([.!?]\s*)([a-z])',
-                  lambda m: m.group(1) + m.group(2).upper(), text)
-
-    return text
-
-
-text = "lubie jest przykład. co dalej? okej! tak to jest."
-capitalized_text = capital_text(text)
-print(capitalized_text)
+    result.sort(reverse=True)
+    return result
