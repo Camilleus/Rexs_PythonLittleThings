@@ -1,4 +1,4 @@
-print("Salut Monsieur/Madame, Avez vous envie de connaître votre IMC(BMI) ? Introduisez vos données ci-dessous:")
+print("Bonjour Monsieur/Madame, Avez vous envie de connaître votre IMC(BMI) ? Introduisez vos données ci-dessous:")
 
 weight = float(input("Quel est ton poids? (kg) : "))
 height = float(input("Quelle est ta hauteur? (cm) : "))
@@ -10,10 +10,10 @@ if bmi > 0:
     elif bmi < 25:
         print("Vous devez etre totalement satisfait abec votre poids!!!!")
     elif bmi < 30:
-        print("Propablement vous avez quelques kilos en trop.")
+        print("Propablement vous avez quelques kilos en trop :D, mais ce n'est pas urgent")
     elif bmi < 40:
-        print("Vous etes obèse!!!!")
+        print("Vous etes obèse!!!! Maigir pour votre Bonheur et Sante! ;) ")
     else:
-        print("Vous avez obésité morbide!! C'est dangereux!!")
+        print("Vous avez obésité morbide!! C'est dangereux!! Pour votre Sante, Maigrir, S'il vous plait!")
 
 # J'aime le programming et Le Python
