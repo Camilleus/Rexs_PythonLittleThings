@@ -550,3 +550,15 @@ def token_parser(s):
     tokens = re.findall(r'(\d+|[+\-*/()])', s)
     return tokens
 """
+"""
+def all_sub_lists(lst):
+    n = len(lst)
+    sublists = [[]]
+
+    for i in range(n):
+        for j in range(i + 1, n + 1):
+            sublist = lst[i:j]
+            sublists.append(sublist)
+    
+    return sorted(sublists, key=len)
+"""
