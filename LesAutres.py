@@ -544,3 +544,9 @@ def data_preparation(data):
     result.sort(reverse=True)
     return result
 """
+"""
+def token_parser(s):    
+    import re
+    tokens = re.findall(r'(\d+|[+\-*/()])', s)
+    return tokens
+"""
