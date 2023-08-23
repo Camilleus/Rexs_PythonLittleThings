@@ -562,3 +562,12 @@ def all_sub_lists(lst):
     
     return sorted(sublists, key=len)
 """
+"""
+def make_request(keys, values):
+    if len(keys) != len(values):
+        return {}
+    request_dict = {}
+    request_dict = {keys[i]: values[i] for i in range(len(keys))}
+
+    return request_dict
+"""
