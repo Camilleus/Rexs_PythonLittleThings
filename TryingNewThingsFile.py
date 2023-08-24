@@ -1,13 +1,11 @@
-def get_employees_by_profession(path, profession):
-    matchings = []
+import re
+
+def get_employees_by_profession (path, profession): 
     with open(path, 'r') as file:
         verses = file.readlines()
+        matchings = []
         for verse in verses:
-            if profession in verse:
-                matchings.append(verse)
-
-    result = '\n'.join(matchings)
-    result = result.replace(profession, "")
-
-    return result
-
+            if verse.find(profession) > 0:
+                vers = verse.replace(profession, "") 
+                matchings.append(re.sub (r'\s+', '', vers))
+        return ' '.join(matchings)
