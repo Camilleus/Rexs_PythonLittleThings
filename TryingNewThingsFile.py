@@ -1,13 +1,13 @@
-def data_preparation(data):
-    result = []
+def get_employees_by_profession(path, profession):
+    matchings = []
+    with open(path, 'r') as file:
+        verses = file.readlines()
+        for verse in verses:
+            if profession in verse:
+                matchings.append(verse)
 
-    for sublist in data:
-        if len(sublist) > 2:
-            sublist.remove(min(sublist))
-            sublist.remove(max(sublist))
-            result.extend(sublist)
-        else:
-            sublist.extend(sublist)
+    result = '\n'.join(matchings)
+    result = result.replace(profession, "")
 
-    result.sort(reverse=True)
     return result
+
