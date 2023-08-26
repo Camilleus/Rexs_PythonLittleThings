@@ -22,7 +22,7 @@ def time_since(date_obj):
     if now.month < date_obj.month or (now.month == date_obj.month and now.day < date_obj.day):
         years -= 1
 
-    months = years * 12 + now.month - date_obj.month
+    months = now.month - date_obj.month
     days = delta.days - years * 365
 
     hours, remainder = divmod(delta.seconds, 3600)
