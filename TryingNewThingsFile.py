@@ -1,11 +1,33 @@
-def decode(data):
-    if len(data)==2:
-        return [data[0]]*data[1]
-    elif len(data)<2:
-        return data
-    return decode(data[:2])+decode(data[2:])
+num = 0
+operation = None
+reset = True
+result = None
+calcOperations = ["+", "-", "*", "/", "**"]
+while True:
+    if reset is True:
+        num = int(input("Podaj liczbę startową:"))
+        reset = False
+    operation = input("Podaj operację arytmetyczną jak np." + str(calcOperations) + " lub exit jeśli koniec lub reset: ")
+    if operation == "exit": break
+    if operation == "reset":
+        reset = True
+        continue
+    if not operation in calcOperations:
+        print("Wprowadzona została błędna operacja.")
+        continue
 
-# Przykład użycia
-encoded_list = ["X", 3, "Z", 2, "X", 2, "Y", 3, "Z", 2]
-decoded_list = decode(encoded_list)
-print(decoded_list)  # Powinno wypisać: ['X', 'X', 'X', 'Z', 'Z', 'X', 'X', 'Y', 'Y', 'Y', 'Z', 'Z']
+    secondNum = int(input("Podaj drugą liczbę:"))
+    if operation == "+":
+        result = num + secondNum
+    if operation == "-":
+        result = num - secondNum
+    if operation == "/":
+        result = num / secondNum
+    if operation == "*":
+        result = num * secondNum
+    if operation == "**":
+        result = num ** secondNum
+
+print(f"Wynik operacji: " + str(num) + " " + str(operation) + " " + str(secondNum) + " = " + str(result) )
+num = result
+result = None
