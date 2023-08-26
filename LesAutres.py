@@ -631,3 +631,38 @@ def flatten(data):
     else:  
         return [first] + flatten(rest)
 """
+"""
+def decode(data):  
+    if not data:
+        return []
+    first = data[0]
+    rest = data[1:]
+    char_counter = []
+    count = 1
+        
+    while rest and rest[0] == first:
+        count += 1
+        rest = rest[1:]
+
+    if count > 1:
+        return [count, first] + decode(rest)
+    else:
+        return [first] + decode(rest)
+"""
+"""
+def encode(data):
+    if not data:
+        return []
+
+    first = data[0]
+
+    if isinstance(first, int): 
+        value = data[1]  
+        count = first  
+        rest = data[2:]  
+
+        return [value] * count + decode(rest)
+    else:  
+        rest = encoded_list[1:]  
+        return [first] + decode(rest)
+"""
