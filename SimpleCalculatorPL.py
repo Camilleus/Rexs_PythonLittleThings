@@ -46,3 +46,58 @@ while True:
         else:
             print("Nie podano żadnych operacji.")
         break
+
+"""
+Another Version of it 
+
+def perform_operation(operator, operand, result):
+    if operator == '+':
+        return result + operand
+    elif operator == '-':
+        return result - operand
+    elif operator == '*':
+        return result * operand
+    elif operator == '/':
+        return result / operand
+
+
+result = None
+operand = None
+operator = None
+wait_for_number = True
+operators = ['+', '-', '*', '/']
+
+while True:
+    user_input = input()
+
+    if user_input == '=':
+        if result is None:
+            print("Brak wyniku do wyświetlenia.")
+        else:
+            print(f"Wynik: {result}")
+        break
+
+    if wait_for_number is True:
+        try:
+            operand = float(user_input)
+        except ValueError:
+            print(f"'{user_input}' nie jest liczbą. Spróbuj ponownie")
+            continue
+
+        if operator is not None:
+            result = perform_operation(operator, operand, result)
+            operator = None
+        else:
+            result = operand
+
+        wait_for_number = False
+
+    else:
+        if user_input not in operators:
+            print(f"'{user_input}' nie jest '+' lub '-' lub '/' lub '*'. Spróbuj ponownie")
+            continue
+
+        operator = user_input
+        wait_for_number = True
+
+"""
