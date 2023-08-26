@@ -632,22 +632,12 @@ def flatten(data):
         return [first] + flatten(rest)
 """
 """
-def decode(data):  
-    if not data:
-        return []
-    first = data[0]
-    rest = data[1:]
-    char_counter = []
-    count = 1
-        
-    while rest and rest[0] == first:
-        count += 1
-        rest = rest[1:]
-
-    if count > 1:
-        return [count, first] + decode(rest)
-    else:
-        return [first] + decode(rest)
+def decode(data):    
+    if len(data)==2:
+        return [data[0]]*data[1]
+    elif len(data)<2:
+        return data
+    return decode(data[:2])+decode(data[2:])
 """
 """
 def encode(data):  
