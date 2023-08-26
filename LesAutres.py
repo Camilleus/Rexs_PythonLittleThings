@@ -650,19 +650,20 @@ def decode(data):
         return [first] + decode(rest)
 """
 """
-def encode(data):
+def encode(data):  
     if not data:
         return []
-
     first = data[0]
+    rest = data[1:]
+    char_counter = []
+    count = 1
+        
+    while rest and rest[0] == first:
+        count += 1
+        rest = rest[1:]
 
-    if isinstance(first, int): 
-        value = data[1]  
-        count = first  
-        rest = data[2:]  
-
-        return [value] * count + decode(rest)
-    else:  
-        rest = encoded_list[1:]  
-        return [first] + decode(rest)
+    if count > 1:
+        return [first, count] + encode(rest)
+    else:
+        return [first, 1] + encode(rest)
 """
