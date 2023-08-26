@@ -1,11 +1,20 @@
-import re
+def decode(encoded_list):
+    if not encoded_list:
+        return []
 
-def get_employees_by_profession (path, profession): 
-    with open(path, 'r') as file:
-        verses = file.readlines()
-        matchings = []
-        for verse in verses:
-            if verse.find(profession) > 0:
-                vers = verse.replace(profession, "") 
-                matchings.append(re.sub (r'\s+', '', vers))
-        return ' '.join(matchings)
+    first = encoded_list[0]
+    rest = encoded_list[1:]
+
+    if isinstance(first, int):
+        if rest[0]:
+            value = rest[0]
+        count = first
+
+        return [value] * count + decode(rest[1:])
+    else:
+        return [first] + decode(rest)
+
+# Przykład użycia
+encoded_list = ["X", 3, "Z", 2, "X", 2, "Y", 3, "Z", 2]
+decoded_list = decode(encoded_list)
+print(decoded_list)  # Powinno wypisać: ['X', 'X', 'X', 'Z', 'Z', 'X', 'X', 'Y', 'Y', 'Y', 'Z', 'Z']
