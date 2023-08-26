@@ -620,3 +620,14 @@ def get_employees_by_profession (path, profession):
         return ' '.join(matchings)
         
 """
+"""
+def flatten(data):
+    if not data: 
+        return []
+    first = data[0]
+    rest = data[1:]
+    if isinstance(first, list):  
+        return flatten(first) + flatten(rest)
+    else:  
+        return [first] + flatten(rest)
+"""
