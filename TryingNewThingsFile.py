@@ -1,18 +1,9 @@
-def decode(encoded_list):
-    if not encoded_list:
-        return []
-
-    first = encoded_list[0]
-    rest = encoded_list[1:]
-
-    if isinstance(first, int):
-        if rest[0]:
-            value = rest[0]
-        count = first
-
-        return [value] * count + decode(rest[1:])
-    else:
-        return [first] + decode(rest)
+def decode(data):
+    if len(data)==2:
+        return [data[0]]*data[1]
+    elif len(data)<2:
+        return data
+    return decode(data[:2])+decode(data[2:])
 
 # Przykład użycia
 encoded_list = ["X", 3, "Z", 2, "X", 2, "Y", 3, "Z", 2]
