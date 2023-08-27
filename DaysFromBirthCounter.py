@@ -1,19 +1,9 @@
-from datetime import datetime, timedelta
+import datetime
 
 BD = input("What si your Brithdate? (yyyy/mm/dd)")
 date_obj = datetime.strptime(BD, '%Y/%m/%d')
 
-"""
-#ITS FIRST VERSION OF IT    
-def time_since(BD):
-    delta = datetime.now() - date_obj
-    return delta
 
-time_elapsed = time_since(BD)
-print(f"From {BD} passed: {time_elapsed.days} days.")
-print(f"From {BD} passed: {time_elapsed.days/30} months.")
-print(f"From {BD} passed: {time_elapsed.days/365} years.")
-"""
 def time_since(date_obj):
     now = datetime.now()
     delta = now - date_obj
@@ -30,8 +20,21 @@ def time_since(date_obj):
 
     return years, months, days, hours, minutes, seconds
 
+
 years, months, days, hours, minutes, seconds = time_since(date_obj)
+date_obj = date_obj.strftime("%d %B, %Y, %H:%M:%S")
 print(
     f"From {date_obj} passed: {years} years, {months} months, {days} days, {hours} hours, {minutes} minutes and {seconds} seconds.")
 
 
+"""
+#ITS FIRST VERSION OF IT    
+def time_since(BD):
+    delta = datetime.now() - date_obj
+    return delta
+
+time_elapsed = time_since(BD)
+print(f"From {BD} passed: {time_elapsed.days} days.")
+print(f"From {BD} passed: {time_elapsed.days/30} months.")
+print(f"From {BD} passed: {time_elapsed.days/365} years.")
+"""
