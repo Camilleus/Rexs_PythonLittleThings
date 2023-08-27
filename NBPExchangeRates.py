@@ -1,6 +1,8 @@
 import requests
+from datetime import datetime
 
-response = requests.get("http://api.nbp.pl/api/exchangerates/tables/a?format=json")
+response = requests.get(
+    "http://api.nbp.pl/api/exchangerates/tables/a?format=json")
 
 if response.ok == True:
     data = response.json()[0]
@@ -9,7 +11,7 @@ if response.ok == True:
     table = data['table']
     no = data["no"]
     effectiveDate = data["effectiveDate"]
-    print("Exchange rates:", table, no, effectiveDate)
+    print(f"Exchange rates for {effectiveDate}: \n", "table:",table, "\n number:",no)
 
     rates = data["rates"]
     for rate in rates:
