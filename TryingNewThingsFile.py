@@ -1,33 +1,36 @@
-num = 0
-operation = None
-reset = True
-result = None
-calcOperations = ["+", "-", "*", "/", "**"]
-while True:
-    if reset is True:
-        num = int(input("Podaj liczbę startową:"))
-        reset = False
-    operation = input("Podaj operację arytmetyczną jak np." + str(calcOperations) + " lub exit jeśli koniec lub reset: ")
-    if operation == "exit": break
-    if operation == "reset":
-        reset = True
-        continue
-    if not operation in calcOperations:
-        print("Wprowadzona została błędna operacja.")
-        continue
+import datetime
+import math
 
-    secondNum = int(input("Podaj drugą liczbę:"))
-    if operation == "+":
-        result = num + secondNum
-    if operation == "-":
-        result = num - secondNum
-    if operation == "/":
-        result = num / secondNum
-    if operation == "*":
-        result = num * secondNum
-    if operation == "**":
-        result = num ** secondNum
 
-print(f"Wynik operacji: " + str(num) + " " + str(operation) + " " + str(secondNum) + " = " + str(result) )
-num = result
-result = None
+def count_leap_years(year):
+    if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+        return 1
+    else:
+        return 0
+
+
+BD = input("What is your Birthdate? (yyyy/mm/dd)")
+date_obj = datetime.datetime.strptime(BD, '%Y/%m/%d')
+
+
+def time_since(date_obj):
+    now = datetime.datetime.now()
+    delta = now - date_obj
+
+    years = (math.floor(now.year - date_obj.year))
+    leap_years = sum(count_leap_years(year)
+                     for year in range(date_obj.year, now.year))
+    total_days = delta.days + leap_years
+
+    months = now.month - date_obj.month
+    days = delta.days - years * 365 - leap_years
+
+    hours, remainder = divmod(delta.seconds, 3600)
+    minutes, seconds = divmod(remainder, 60)
+
+    return years, months, days, hours, minutes, seconds
+
+
+years, months, days, hours, minutes, seconds = time_since(date_obj)
+formatted_date_obj = date_obj.strftime("%d %B, %Y, %H:%M:%S")
+print(f"From {formatted_date_obj} passed: {years} years, {months} months, {days} days, {hours} hours, {minutes} minutes and {seconds} seconds.")
