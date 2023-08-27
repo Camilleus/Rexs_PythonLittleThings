@@ -38,3 +38,10 @@ print(f"From {BD} passed: {time_elapsed.days} days.")
 print(f"From {BD} passed: {time_elapsed.days/30} months.")
 print(f"From {BD} passed: {time_elapsed.days/365} years.")
 """
+
+
+def get_days_from_today(date):
+    now = datetime.now().date()
+    parts = date.split('-')
+    the_date = datetime(int(parts[0]), int(parts[1]), int(parts[2])).date()
+    return (now - the_date).days
