@@ -1,4 +1,4 @@
-grades_points = {
+grades_points = {  # Try to change this into formula from BMI calculator please!
     "1": 0,
     "2": 35,
     "3": 60,
@@ -26,19 +26,29 @@ grades_descriptions = {
     "6": "Very good",
     "7": "Perfectly"
 }
+
+
 def get_grade(ects_grade):
     for grade, points in grades_points.items():
         if ects_grade == grades_ects[grade]:
             return int(grade)
     return None
+
+
 def get_description(ects_grade):
     for grade, description in grades_descriptions.items():
         if ects_grade == grades_ects[grade]:
             return description
     return None
 
-ects_grade = "C"
+
+ects_grade = input("What score did you get? ")
 grade = get_grade(ects_grade)
 description = get_description(ects_grade)
-print(f"Grade: {grade}")
-print(f"Grade Description: {description}")
+
+value = ects_grade
+if value not in grades_points:
+    print("Please write your score correctly! ;) ")
+else:
+    print(f"Your Grade is {grade for key in grades_points}")
+    print(f"Grade Description: {description for key in grades_points}")
