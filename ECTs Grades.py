@@ -46,8 +46,7 @@ ects_grade = input("What score did you get? ")
 grade = get_grade(ects_grade)
 description = get_description(ects_grade)
 
-value = ects_grade
-if value not in grades_points:
+if ects_grade not in grades_points:
     print("Please write your score correctly! ;) ")
 else:
     print(f"Your Grade is {grade for key in grades_points}")
