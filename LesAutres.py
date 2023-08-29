@@ -702,3 +702,13 @@ def get_days_in_month(month, year):
         else:
             return 28
 """
+"""
+from datetime import datetime
+
+
+def get_days_from_today(date):
+    now = datetime.now().date()
+    parts = date.split('-')
+    the_date = datetime(int(parts[0]), int(parts[1]), int(parts[2])).date()
+    return (now - the_date).days
+"""
