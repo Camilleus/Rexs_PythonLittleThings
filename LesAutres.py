@@ -672,3 +672,14 @@ def get_numbers_ticket(min, max, quantity):
     sorted_numbers_on_ticket = sorted(numbers_ticket)
     return sorted_numbers_on_ticket
 """
+"""
+from datetime import datetime
+
+
+def get_str_date(date):
+
+    date_to_go = datetime.strptime(date, '%Y-%m-%d %H:%M:%S.%fZ')
+    date_to_display = date_to_go.strftime('%A %d %B %Y')
+    
+    return date_to_display
+"""
