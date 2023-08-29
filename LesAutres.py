@@ -658,21 +658,6 @@ def encode(data):
         return [first, 1] + encode(rest)
 """
 """
-from random import randrange
-
-
-def get_numbers_ticket(min, max, quantity):
-    if min < 1 or max > 1000 or quantity <= min or quantity >= max:
-        return []
-    numbers_ticket = set()
-    numbers = 0
-    while len(numbers_ticket) < quantity:
-        random_num = randrange(min, max + 1)
-        numbers_ticket.add(random_num)
-    sorted_numbers_on_ticket = sorted(numbers_ticket)
-    return sorted_numbers_on_ticket
-"""
-"""
 from datetime import datetime
 
 
@@ -711,4 +696,32 @@ def get_days_from_today(date):
     parts = date.split('-')
     the_date = datetime(int(parts[0]), int(parts[1]), int(parts[2])).date()
     return (now - the_date).days
+"""
+"""
+from random import randrange
+
+
+def get_numbers_ticket(min, max, quantity):
+    if min < 1 or max > 1000 or quantity <= min or quantity >= max:
+        return []
+    numbers_ticket = set()
+    numbers = 0
+    while len(numbers_ticket) < quantity:
+        random_num = randrange(min, max + 1)
+        numbers_ticket.add(random_num)
+    sorted_numbers_on_ticket = sorted(numbers_ticket)
+    return sorted_numbers_on_ticket
+"""
+"""
+import random
+
+
+def get_random_winners(quantity, participants):
+    participant_keys = list(participants.keys())
+    if quantity > len(participant_keys):
+        return []
+    random.shuffle(participant_keys)
+    random_winners = random.sample(participant_keys, quantity)
+        
+    return random_winners
 """
