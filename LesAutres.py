@@ -657,3 +657,18 @@ def encode(data):
     else:
         return [first, 1] + encode(rest)
 """
+"""
+from random import randrange
+
+
+def get_numbers_ticket(min, max, quantity):
+    if min < 1 or max > 1000 or quantity <= min or quantity >= max:
+        return []
+    numbers_ticket = set()
+    numbers = 0
+    while len(numbers_ticket) < quantity:
+        random_num = randrange(min, max + 1)
+        numbers_ticket.add(random_num)
+    sorted_numbers_on_ticket = sorted(numbers_ticket)
+    return sorted_numbers_on_ticket
+"""
