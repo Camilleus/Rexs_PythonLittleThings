@@ -30,6 +30,8 @@ def time_since(date_obj):
         years -= 1
     if days < 0 or days > 31:
         days = days = delta.days - years * 365 - leap_years
+        if days > 31:
+            days = delta.days - years * 365 - leap_years - months*30
     hours, remainder = divmod(delta.seconds, 3600)
     minutes, seconds = divmod(remainder, 60)
 
