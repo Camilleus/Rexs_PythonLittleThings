@@ -22,12 +22,12 @@ def BMI():
             else:
                 print(
                     "Vous avez obésité morbide!! C'est dangereux!! Pour votre Sante, Maigrir, S'il vous plait!")
-            time.sleep(60)
+            time.sleep(5)
         answer = input("Voulez vous essayer encore une fois?")
-        if answer == "No" "Non" "N" "n" "no" "non":
+        if answer.lower() in ["no", "non", "n"]:
             break
         # J'aime le programming et Le Python
 
 
-if __name__ == "__BMI__":
+if __name__ == "__main__":
     BMI()
