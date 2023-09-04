@@ -10,14 +10,6 @@ def days_from_date():
             else:
                 return 0
 
-        def get_days_from_today(date):
-            now = datetime.now().date()
-            parts = date.split('-')
-            the_date = datetime(int(parts[0]), int(
-                parts[1]), int(parts[2])).date()
-            return (now - the_date).days
-        # Doesn't work with future dates repair it son!
-
         BD = input("What is your Birthdate? (yyyy/mm/dd)")
         date_obj = datetime.datetime.strptime(BD, '%Y/%m/%d')
 
@@ -47,6 +39,16 @@ def days_from_date():
         years, months, days, hours, minutes, seconds = time_since(date_obj)
         formatted_date_obj = date_obj.strftime("%d %B, %Y, %H:%M:%S")
         print(f"From {formatted_date_obj} passed: {years} years, {months} months, {days} days, {hours} hours, {minutes} minutes and {seconds} seconds.")
+        answer = input("Do you want to try once again? ")
+        if answer.lower() in ["no", "non", "n"]:
+            break
+
+        def get_days_from_today(date):
+            now = datetime.now().date()
+            parts = date.split('-')
+            the_date = datetime(int(parts[0]), int(
+                parts[1]), int(parts[2])).date()
+            return (now - the_date).days
 
 
 if __name__ == "__main__":
