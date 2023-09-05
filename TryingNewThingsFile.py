@@ -1,23 +1,17 @@
-import random
+import time
 
 
-def get_random_winners(participants, quantity):
-    participant_keys = list(participants.keys())
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return (fibonacci(n-1) + fibonacci(n-2))
 
-    if quantity > len(participant_keys):
-        return []
-    random_winners = random.sample(participant_keys, quantity)
-    return random_winners
 
-participants = {
-    "603d2cec9993c627f0982404": "test@test.com",
-    "603f79022922882d30dd7bb6": "test11@test.com",
-    "60577ce4b536f8259cc225d2": "test2@test.com",
-    "605884760742316c07eae603": "vitanlhouse@gmail.com",
-    "605b89080c318d66862db390": "elhe2013@gmail.com",
-}
+start = time.time()
+n = int(input("Which number of Fibonacci sequence do you want to see? (If it is bigger than 20, this can take a little bit more time)"))
+for i in range(n):
+    print(f"{i}. Fibonacci sequence number is {fibonacci(i)}")
 
-quantity_of_winners = 2
-random_winner_ids = get_random_winners(participants, quantity=quantity_of_winners)
-print(random_winner_ids)
-
+end = time.time()
+print(f"This operation took {end - start} seconds")
