@@ -1,6 +1,15 @@
 import time
 
 
+
+cached = {}
+def cache(fn)
+    def wrapper(n)
+        if n not in cached:
+            cached[n] == fn[n]
+            return cached[n]
+    return wrapper
+
 def fibonacci(n):
     if n <= 1:
         return n
@@ -15,3 +24,5 @@ for i in range(n):
 
 end = time.time()
 print(f"This operation took {end - start} seconds")
+
+
