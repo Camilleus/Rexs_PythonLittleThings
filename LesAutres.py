@@ -747,3 +747,15 @@ def get_random_winners(quantity, participants):
         
     return random_winners
 """
+"""
+from decimal import Decimal, getcontext
+
+
+def decimal_average(number_list, signs_count):
+    getcontext().prec = signs_count 
+    decimal_numbers = [Decimal(str(num)) for num in number_list]
+    lol = sum(decimal_numbers)
+    counter = Decimal(len(decimal_numbers))
+    average = lol / counter
+    return average
+"""
