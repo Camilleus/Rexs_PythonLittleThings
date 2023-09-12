@@ -52,3 +52,39 @@ while True:
     except ValueError:
         print("Please enter a valid integer.")
 """
+"""
+FIBONACCI SEQUENCE
+
+
+def fibonacci(n):
+   if n <= 1:
+       return n
+   else:
+       return(fibonacci(n-1) + fibonacci(n-2))
+
+nterms = int(input)
+for i in range(nterms):
+    print(f"Fibonacci sequence:{fibonacci(i)}")
+
+
+
+#Other Version of it : 
+
+import time
+
+
+def fibonacci(n):
+    if n <= 1:
+        return n
+    else:
+        return (fibonacci(n-1) + fibonacci(n-2))
+
+
+start = time.time()
+n = int(input("Which number of Fibonacci sequence do you want to see? (If it is bigger than 20, this can take a little bit more time)"))
+for i in range(n):
+    print(f"{i}. Fibonacci sequence number is {fibonacci(i)}")
+
+end = time.time()
+print(f"This operation took {end - start} seconds")
+"""
