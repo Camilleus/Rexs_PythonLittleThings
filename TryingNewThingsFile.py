@@ -1,17 +1,8 @@
 import time
+from functools import lru_cache
 
 
-cached = {}
-
-
-def cache(fn):
-    def wrapper(n):
-        if n not in cached:
-            cached[n] == fn[n]
-            return cached[n]
-    return wrapper
-
-
+@lru_cache()
 def fibonacci(n):
     if n <= 1:
         return n
@@ -21,7 +12,7 @@ def fibonacci(n):
 
 start = time.time()
 n = int(input("Which number of Fibonacci sequence do you want to see? (If it is bigger than 20, this can take a little bit more time)"))
-for i in range(n):
+for i in range(n+1):
     print(f"{i}. Fibonacci sequence number is {fibonacci(i)}")
 
 end = time.time()
