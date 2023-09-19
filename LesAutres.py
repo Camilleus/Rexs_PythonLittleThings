@@ -99,10 +99,8 @@ for ch in message:
     pos = (pos + offset) % 26
     new_char = chr(pos + ord(letter))
     encoded_message += new_char     
-"""
-"""
-Factorial / Silnia
 
+Factorial / Silnia
 
 
 def factorial(n):
@@ -113,8 +111,7 @@ def factorial(n):
 
 factorial(5)# 120
 
-"""
-"""
+
 #Sum of Consecutive Numbers 
 import time
 end = int(input("Hello! What's the number you want to see a consecutive number of? type it here: "))
@@ -129,8 +126,8 @@ print("This is your number's consecutive number: ")
 print(sum)
 time.sleep(3)
 print("Thank you kindly for using my code :D")
-"""
-"""
+
+
 articles_dict = [
     {
         "title": "Endless ocean waters.",
@@ -181,8 +178,8 @@ def find_articles(key, letter_case=False):
 
     return founded_articles
 
-"""
-"""
+
+
 import re
 
 
@@ -207,8 +204,9 @@ def find_word(text, word):
         }
 
     return result_dict
-"""
-"""
+
+
+
 import re
 
 
@@ -218,16 +216,19 @@ def replace_spam_words(text, spam_words):
         text = word_pattern.sub('*' * len(word), text)
     return text
 
-"""
-"""
+
+
+
 import re
 
 def find_all_emails(text):
     all_emails = re.compile(r"[a-zA-Z][a-zA-Z0-9_.]+@[a-z]+\.[a-z]{2,}")
     result = all_emails.findall(text)
     return result
-"""
-"""
+
+
+
+
 import re
 
 
@@ -241,8 +242,10 @@ text = "Irma +380(67)777-7-771 second +380(67)777-77-77 aloha a@test.com abc111@
 phones = find_all_phones(text)
 print(phones)
 
-"""
-"""
+
+
+
+
 import re
 
 
@@ -252,8 +255,11 @@ def find_all_links(text):
     iterator = re.finditer(pattern, text)
     for match in iterator:
         result.append(match.group())
-    return result"""
-"""
+    return result
+
+
+
+
 def write_employees_to_file(employee_list, path):
     with open(path, "w") as file:
         for department in employee_list:
@@ -265,8 +271,10 @@ def write_employees_to_file(employee_list, path):
 employee_list = [['Robert Stivenson,28',
                   'Alex Denver,30'], ['Drake Mikelsson,19']]
 write_employees_to_file(employee_list, "employee_data.txt")
-"""
-"""
+
+
+
+
 def add_employee_to_file(record, path):
     file = open(path, 'a')  # Otwieranie pliku w trybie dodawania (append)
     file.write(record + '\n')  # Dodawanie nowego pracownika i nowej linii
@@ -274,8 +282,10 @@ def add_employee_to_file(record, path):
 
 # Przykład użycia:
 add_employee_to_file("Drake Mikelsson,19", "employee_data.txt")
-"""
-"""
+
+
+
+
 def get_cats_info(path):
     cats_info = []
 
@@ -295,8 +305,11 @@ def get_cats_info(path):
 path = "cats_data.txt"
 cats_data = get_cats_info(path)
 print(cats_data)
-"""
-"""
+
+
+
+
+
 def get_recipe(path, search_id):
     with open(path, 'r') as file:
         for line in file:
@@ -320,8 +333,11 @@ if recipe:
 else:
     print("Przepis o podanym ID nie został znaleziony.")
 
-"""
-"""
+
+
+
+
+
 def sanitize_file(source, output):
     with open(source, 'r') as source_file:
         content = source_file.read()
@@ -335,8 +351,11 @@ source_file_path = "source.txt"
 output_file_path = "output.txt"
 sanitize_file(source_file_path, output_file_path)
 print("Plik został oczyszczony i zapisany do", output_file_path)
-"""
-"""
+
+
+
+
+
 def save_applicant_data(source, output):
     with open(output, 'w') as output_file:
         for applicant in source:
@@ -375,8 +394,11 @@ applicant_data = [
 output_file_path = "output.txt"
 save_applicant_data(applicant_data, output_file_path)
 print("Dane kandydatów zostały zapisane do pliku", output_file_path)
-"""
-"""
+
+
+
+
+
 def is_equal_string(utf8_string, utf16_string):
     decoded_utf8 = utf8_string.encode('utf-8').decode('utf-8')
     decoded_utf16 = utf16_string.encode('utf-16').decode('utf-16')
@@ -388,14 +410,20 @@ utf8_string = "Hello, world!"
 utf16_string = "Hello, world!".encode('utf-16').decode('utf-16')
 result = is_equal_string(utf8_string, utf16_string)
 print(result)  # Oczekiwane wyjście: True
-"""
-"""
+
+
+
+
+
 def is_equal_string(utf8_string, utf16_string):
     utf8_normalized = utf8_string.decode('utf-8').casefold().encode('utf-8')
     utf16_normalized = utf16_string.decode('utf-16').casefold().encode('utf-8')
     return utf8_normalized == utf16_normalized
-"""
-"""
+
+
+
+
+
 def save_credentials_users(path, users_info):
     with open(path, 'wb') as file:
         for username, password in users_info.items():
@@ -405,8 +433,11 @@ def save_credentials_users(path, users_info):
 # Przykład użycia:
 users_info = {'andry': 'uyro18890D', 'steve': 'oppjM13LL9e'}
 save_credentials_users('users.txt', users_info)
-"""
-"""
+
+
+
+
+
 def get_credentials_users(path):
     credentials = []
     with open(path, 'rb') as file:
@@ -418,8 +449,11 @@ def get_credentials_users(path):
 # Przykład użycia:
 credentials = get_credentials_users('users.txt')
 print(credentials)
-"""
-"""
+
+
+
+
+
 import base64
 
 def encode_data_to_base64(data):
@@ -434,8 +468,11 @@ def encode_data_to_base64(data):
 credentials = ['andry:uyro18890D', 'steve:oppjM13LL9e']
 encoded_credentials = encode_data_to_base64(credentials)
 print(encoded_credentials)
-"""
-"""
+
+
+
+
+
 import shutil
 
 
@@ -459,8 +496,11 @@ backup_path = "/path/to/backup"
 backup_file = "employee_residence.txt"
 backup_archive = create_backup(backup_path, backup_file, employee_residence)
 print("Backup archive:", backup_archive)
-"""
-"""
+
+
+
+
+
 import shutil
 
 def unpack(archive_path, path_to_unpack):
@@ -471,15 +511,22 @@ archive_path = "/path/to/backup/backup_folder.zip"
 path_to_unpack = "/path/to/extracted_data"
 unpack(archive_path, path_to_unpack)
 print("Archive unpacked successfully.")
-"""
-"""
+
+
+
+
+
 from setuptools import setup
 
 
 def do_setup(args_dict):
     setup(**args_dict)
-"""
-"""
+
+
+
+
+
+
 from setuptools import setup
 
 
@@ -495,8 +542,12 @@ def do_setup(args_dict, requires, entry_points):
           install_requires=requires,
           entry_points={'console_scripts': ['helloworld = useful.some_code:hello_world']}
           )
-"""
-"""
+
+
+
+
+
+
 def is_integer(s):
     s = s.strip()
     if len(s) == 0:
@@ -507,8 +558,12 @@ def is_integer(s):
         return True
     else:
         return False
-"""
-"""
+
+
+
+
+
+
 import re
 
 
@@ -517,8 +572,11 @@ def capital_text(text):
     text = re.sub(r'([.!?]\s*)([a-z])',lambda m: m.group(1) + m.group(2).upper(), text)
 
     return text
-"""
-"""
+
+
+
+
+
 def solve_riddle(riddle, word_length, start_letter, reverse=False):
     if reverse:
         riddle = riddle[::-1]
@@ -530,8 +588,11 @@ def solve_riddle(riddle, word_length, start_letter, reverse=False):
                 return candidate
     
     return ""
-"""
-"""
+
+
+
+
+
 def data_preparation(data):
     result = []
 
@@ -545,14 +606,22 @@ def data_preparation(data):
 
     result.sort(reverse=True)
     return result
-"""
-"""
+
+
+
+
+
+
 def token_parser(s):    
     import re
     tokens = re.findall(r'(\d+|[+\-*/()])', s)
     return tokens
-"""
-"""
+
+
+
+
+
+
 def all_sub_lists(lst):
     n = len(lst)
     sublists = [[]]
@@ -563,8 +632,11 @@ def all_sub_lists(lst):
             sublists.append(sublist)
     
     return sorted(sublists, key=len)
-"""
-"""
+
+
+
+
+
 def make_request(keys, values):
     if len(keys) != len(values):
         return {}
@@ -572,8 +644,11 @@ def make_request(keys, values):
     request_dict = {keys[i]: values[i] for i in range(len(keys))}
 
     return request_dict
-"""
-"""
+
+
+
+
+
 def sequence_buttons(string):
     char_buttons = {
         '.': '1', ',': '11', '?': '111','!': '1111',':': '1111',
@@ -596,8 +671,11 @@ def sequence_buttons(string):
             flush.append(char_buttons[char])
     
     return ''.join(flush) 
-"""
-"""
+
+
+
+
+
 def file_operations(path, additional_info, start_pos, count_chars):
     with open(path, 'a') as file:
         file.write(additional_info)
@@ -606,8 +684,11 @@ def file_operations(path, additional_info, start_pos, count_chars):
         read_data = file.read(count_chars) 
         
     return read_data
-"""
-"""
+
+
+
+
+
 import re
 
 
@@ -621,8 +702,12 @@ def get_employees_by_profession (path, profession):
                 matchings.append(re.sub (r'\s+', '', vers))
         return ' '.join(matchings)
         
-"""
-"""
+
+
+
+
+
+
 def flatten(data):
     if not data: 
         return []
@@ -632,16 +717,24 @@ def flatten(data):
         return flatten(first) + flatten(rest)
     else:  
         return [first] + flatten(rest)
-"""
-"""
+
+
+
+
+
+
 def decode(data):    
     if len(data)==2:
         return [data[0]]*data[1]
     elif len(data)<2:
         return data
     return decode(data[:2])+decode(data[2:])
-"""
-"""
+
+
+
+
+
+
 def encode(data):  
     if not data:
         return []
@@ -658,8 +751,12 @@ def encode(data):
         return [first, count] + encode(rest)
     else:
         return [first, 1] + encode(rest)
-"""
-"""
+
+
+
+
+
+
 from datetime import datetime
 
 
@@ -669,8 +766,12 @@ def get_str_date(date):
     date_to_display = date_to_go.strftime('%A %d %B %Y')
     
     return date_to_display
-"""
-"""
+
+
+
+
+
+
 from datetime import date
 
 
@@ -688,8 +789,13 @@ def get_days_in_month(month, year):
             return 29
         else:
             return 28
-"""
-"""
+
+
+
+
+
+
+
 from datetime import datetime
 
 
@@ -698,8 +804,12 @@ def get_days_from_today(date):
     parts = date.split('-')
     the_date = datetime(int(parts[0]), int(parts[1]), int(parts[2])).date()
     return (now - the_date).days
-"""
-"""
+
+
+
+
+
+
 from random import randrange
 
 
@@ -713,8 +823,12 @@ def get_numbers_ticket(min, max, quantity):
         numbers_ticket.add(random_num)
     sorted_numbers_on_ticket = sorted(numbers_ticket)
     return sorted_numbers_on_ticket
-"""
-"""
+
+
+
+
+
+
 import random
 
 
@@ -726,8 +840,12 @@ def get_random_winners(quantity, participants):
     random_winners = random.sample(participant_keys, quantity)
         
     return random_winners
-"""
-"""
+
+
+
+
+
+
 from decimal import Decimal, getcontext
 
 
