@@ -88,3 +88,44 @@ for i in range(n):
 end = time.time()
 print(f"This operation took {end - start} seconds")
 """
+""" 
+Fibonacci with Decorators
+
+import time
+
+
+def cached(fn):
+    _cache = {}
+    def wrapper(n):
+        if n not in _cache:
+            _cache[n] = fn(n)
+        return _cache[n]
+    return wrapper
+
+
+def timeit(fn):
+    def wrapper(n):
+        start = time.time()
+        result = fn(n)
+        end = time.time()
+        duration = round(end - start, 3)
+        print(f"Time ellapsed {duration} seconds")
+        return result
+    return wrapper
+
+
+@cached
+def _fib(n):
+    if n in [0, 1]:
+        return n
+    return _fib(n - 2) + _fib(n - 1)
+
+
+@timeit
+def fib(n):
+    return _fib(n)
+
+
+if __name__ == "__main__":
+    result = fib(90)
+    print(f"Result: {result}")"""
