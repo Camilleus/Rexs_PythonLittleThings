@@ -22,9 +22,9 @@ dpg.start_dearpygui()
 dpg.destroy_context()
 
 
-"""
-# Select table cell and get data callback
-# from https://github.com/DataExplorerUser/tools
+""" Select table cell and get data callback
+    from https://github.com/DataExplorerUser/tools
+    
 import dearpygui.dearpygui as dpg
 
 dpg.create_context()
