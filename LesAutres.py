@@ -872,4 +872,12 @@ def get_discount_price_customer(price, customer):
 
     discounted_price = price * (1 - discount)
     return discounted_price
+    
+    
+    
+def discount_price(discount):
+    def calculate_discounted_price(price):
+        return price * (1 - discount)
+
+    return calculate_discounted_price
 """
