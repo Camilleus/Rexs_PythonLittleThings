@@ -856,4 +856,20 @@ def decimal_average(number_list, signs_count):
     counter = Decimal(len(decimal_numbers))
     average = lol / counter
     return average
+
+
+
+
+
+DEFAULT_DISCOUNT = 0.05
+
+
+def get_discount_price_customer(price, customer):
+    if "discount" in customer:
+        discount = customer["discount"]
+    else:
+        discount = DEFAULT_DISCOUNT
+
+    discounted_price = price * (1 - discount)
+    return discounted_price
 """
