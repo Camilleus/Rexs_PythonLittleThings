@@ -931,4 +931,11 @@ def sum_profit(string):
         total_profit += number
     
     return total_profit
+    
+    
+    
+    
+def get_emails(list_contacts):
+    email_list = list(map(lambda contact: contact["email"], list_contacts))
+    return email_list
 """
