@@ -953,4 +953,16 @@ def positive_values(list_payment):
 def get_favorites(contacts):
     favorite_contacts = list(filter(lambda contact: contact["favorite"], contacts))
     return favorite_contacts
+    
+    
+    
+    
+    
+from functools import reduce
+
+
+def sum_numbers(numbers):
+    total_sum = reduce(lambda x, y: x + y, numbers)
+    return total_sum
+
 """
