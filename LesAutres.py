@@ -946,4 +946,11 @@ def get_emails(list_contacts):
 def positive_values(list_payment):
     positive_payments = list(filter(lambda x: x > 0, list_payment))
     return positive_payments
+    
+    
+    
+    
+def get_favorites(contacts):
+    favorite_contacts = list(filter(lambda contact: contact["favorite"], contacts))
+    return favorite_contacts
 """
