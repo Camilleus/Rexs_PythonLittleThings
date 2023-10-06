@@ -965,4 +965,12 @@ def sum_numbers(numbers):
     total_sum = reduce(lambda x, y: x + y, numbers)
     return total_sum
 
+
+
+from functools import reduce
+
+
+def amount_payment(payment):
+    total_payment = reduce(lambda x, y: x + y if y > 0 else x, payment, 0)
+    return total_payment
 """
