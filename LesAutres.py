@@ -880,4 +880,34 @@ def discount_price(discount):
         return price * (1 - discount)
 
     return calculate_discounted_price
+    
+    
+    
+    
+def format_phone_number(func):
+    def wrapper(phone):
+        if len(phone) <= 12:
+            phone = "+38" + phone
+        
+        return func(phone)
+    
+    return wrapper
+    
+@format_phone_number
+def sanitize_phone_number(phone):
+    new_phone = (
+        phone.strip()
+            .removeprefix("+")
+            .replace("(", "")
+            .replace(")", "")
+            .replace("-", "")
+            .replace(" ", "")
+    )
+    if new_phone.startswith("38"):
+        new_phone = "+" +  new_phone
+    elif new_phone.startswith("+38"):
+        pass
+    else:
+        new_phone = "+38" +  new_phone
+    return new_phone
 """
