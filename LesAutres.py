@@ -938,4 +938,12 @@ def sum_profit(string):
 def get_emails(list_contacts):
     email_list = list(map(lambda contact: contact["email"], list_contacts))
     return email_list
+    
+    
+    
+    
+    
+def positive_values(list_payment):
+    positive_payments = list(filter(lambda x: x > 0, list_payment))
+    return positive_payments
 """
