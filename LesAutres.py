@@ -910,4 +910,25 @@ def sanitize_phone_number(phone):
     else:
         new_phone = "+38" +  new_phone
     return new_phone
+    
+    
+    
+    
+import re
+
+def generator_numbers(string=""):
+    pattern = r"-?\d+"
+
+    matches = re.findall(pattern, string)
+
+    for match in matches:
+        yield int(match)
+
+def sum_profit(string):
+    total_profit = 0
+
+    for number in generator_numbers(string):
+        total_profit += number
+    
+    return total_profit
 """
