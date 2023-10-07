@@ -20,6 +20,10 @@ print(f"This operation took {end - start} seconds")
 
 
 """"
+FIBONACCI SEQUENCE
+
+
+
 import time
 
 
@@ -51,9 +55,11 @@ while True:
 
     except ValueError:
         print("Please enter a valid integer.")
-"""
-"""
-FIBONACCI SEQUENCE
+
+
+
+
+
 
 
 def fibonacci(n):
@@ -96,7 +102,6 @@ print(f"This operation took {end - start} seconds")
 Another simple version with cache:
 
 
-
 def caching_fibonacci():
     cache = {}
     def fibonacci(n):
@@ -111,8 +116,11 @@ def caching_fibonacci():
         cache[n] = result
         return result
     return fibonacci
-"""
-""" 
+
+
+
+
+
 Fibonacci with Decorators
 
 import time
@@ -152,4 +160,6 @@ def fib(n):
 
 if __name__ == "__main__":
     result = fib(90)
-    print(f"Result: {result}")"""
+    print(f"Result: {result}")
+    
+"""
