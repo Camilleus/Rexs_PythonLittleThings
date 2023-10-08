@@ -1,4 +1,6 @@
 class Animal:
+    color = "white"
+
     def __init__(self, nickname, weight):
         self.nickname = nickname
         self.weight = weight
@@ -6,9 +8,13 @@ class Animal:
     def say(self):
         pass
 
-    def change_weight(self, new_weight):
-        self.weight = new_weight
+    def change_weight(self, weight):
+        self.weight = weight
+
+    def change_color(self, new_color):
+        Animal.color = new_color
 
 
-animal = Animal("Simon", 10)
-animal.change_weight(12)
+first_animal = Animal("Alex", 10)
+second_animal = Animal("Svenya", 10)
+first_animal.change_color("red")
