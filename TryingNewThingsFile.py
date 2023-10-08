@@ -36,12 +36,32 @@ class Cat(Animal):
 
 
 class Dog(Animal):
-    def __init__(self, nickname, weight, breed):
-        super().__init__(nickname, weight)
+    def __init__(self, nickname, weight, breed, owner):
         self.breed = breed
+        self.owner = owner
+        super().__init__(nickname, weight)
 
     def say(self):
         return "Woof"
+
+    def who_is_owner(self):
+        return self.owner.info()
+
+
+class CatDog(Cat, Dog):
+    def say(self):
+        return "Meow"
+
+    def info(self):
+        return f"{self.nickname}-{self.weight}"
+
+
+class DogCat(Dog, Cat):
+    def say(self):
+        return "Woof"
+
+    def info(self):
+        return f"{self.nickname}-{self.weight}"
 
 
 dog = Dog("Barbos", 23, "labrador")
