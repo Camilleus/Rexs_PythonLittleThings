@@ -21,6 +21,16 @@ class Cat(Animal):
         return "Meow"
 
 
+class Dog(Animal):
+    def __init__(self, nickname, weight, breed):
+        super().__init__(nickname, weight)
+        self.breed = breed
+
+    def say(self):
+        return "Woof"
+
+
+dog = Dog("Barbos", 23, "labrador")
 cat = Cat("Simon", 10)
 first_animal = Animal("Alex", 10)
 second_animal = Animal("Svenya", 10)
