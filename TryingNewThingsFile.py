@@ -1,32 +1,19 @@
-from collections import UserString
-from collections import UserDict
+class Contacts:
+    current_id = 1
 
+    def __init__(self):
+        self.contacts = []
 
-class LookUpKeyDict(UserDict):
-    def lookup_key(data, value):
-        keys = []
-        for key in data:
-            if data[key] == value:
-                keys.append(key)
-        return keys
+    def list_contacts(self):
+        return self.contacts
 
-
-class NumberString(UserString):
-    def number_count(self):
-        count = 0
-        for char in self.data:
-            if char.isdigit():
-                count += 1
-        return count
-
-
-class IDException(Exception):
-    pass
-
-
-def add_id(id_list, employee_id):
-    if employee_id.startswith("01"):
-        id_list.append(employee_id)
-        return id_list
-    else:
-        raise IDException
+    def add_contacts(self, name, phone, email, favorite):
+        contact = {
+            "id": Contacts.current_id,
+            "name": name,
+            "phone": phone,
+            "email": email,
+            "favorite": favorite,
+        }
+        Contacts.current_id += 1
+        self.contacts.append(contact)
