@@ -15,6 +15,13 @@ class Animal:
         Animal.color = new_color
 
 
+class Cat(Animal):
+
+    def say(self):
+        return "Meow"
+
+
+cat = Cat("Simon", 10)
 first_animal = Animal("Alex", 10)
 second_animal = Animal("Svenya", 10)
 first_animal.change_color("red")
