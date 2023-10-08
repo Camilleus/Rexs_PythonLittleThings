@@ -5,3 +5,10 @@ class Animal:
 
     def say(self):
         pass
+
+    def change_weight(self, new_weight):
+        self.weight = new_weight
+
+
+animal = Animal("Simon", 10)
+animal.change_weight(12)
