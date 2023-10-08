@@ -1,5 +1,7 @@
-class  Animal:
-    pass
+class Animal:
+    def __init__(self, nickname, weight):
+        self.nickname = nickname
+        self.weight = weight
 
-    
-animal = Animal()
+    def say(self):
+        pass
