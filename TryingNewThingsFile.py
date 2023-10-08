@@ -15,6 +15,20 @@ class Animal:
         Animal.color = new_color
 
 
+class Owner:
+    def __init__(self, name, age, address):
+        self.name = name
+        self.age = age
+        self.address = address
+
+    def info(self):
+        return {
+            "name": self.name,
+            "age": self.age,
+            "address": self.address
+        }
+
+
 class Cat(Animal):
 
     def say(self):
