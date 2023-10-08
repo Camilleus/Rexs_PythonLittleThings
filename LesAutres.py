@@ -35,9 +35,11 @@ if is_permission is True:
 else:
     acces = False
 
-"""
-"""
-SQUARE EQUATION
+
+
+
+
+#SQUARE EQUATION
 
 
 import math
@@ -55,9 +57,12 @@ elif D == 0:
     x1 = (-b + math.sqrt(D)) / (2 * a)
 else:
     D < 0
-"""
-"""
-GREATEST COMMON DIVISOR
+
+
+
+
+
+#GREATEST COMMON DIVISOR
 
 
 
@@ -77,9 +82,12 @@ while bigger % gcd != 0 :
             print(gcd)
         else:
             print(gcd)
-"""
-"""
-CAESAR'S CODE
+
+
+
+
+
+#CAESAR'S CODE
 
 
 
@@ -100,7 +108,7 @@ for ch in message:
     new_char = chr(pos + ord(letter))
     encoded_message += new_char     
 
-Factorial / Silnia
+#Factorial / Silnia
 
 
 def factorial(n):
@@ -233,7 +241,7 @@ import re
 
 
 def find_all_phones(text):
-    result re.findall (r"\+380\([0-9]{2}\)[0-9]{3}\-[0-9]{1}\-[0-9]{3}|\+380\([0-9]{2}\)[0-9]{3}\-[0-9]{2}\-[0-9]{2}", text)
+    result = re.findall(r"\+380\([0-9]{2}\)[0-9]{3}\-[0-9]{1}\-[0-9]{3}|\+380\([0-9]{2}\)[0-9]{3}\-[0-9]{2}\-[0-9]{2}", text)
     return result
 
 
@@ -1126,5 +1134,4 @@ class Contacts:
                 self.contacts.remove(contact)
             else:
                 pass
-
 """
