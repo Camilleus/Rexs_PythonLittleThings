@@ -20,7 +20,6 @@ class Contacts:
         Contacts.current_id += 1
 
     def get_contact_by_id(self, id):
-        for contact in self.contacts:
-            if contact["id"] == id:
-                return contact
-        return None
+        result = list(
+            filter(lambda contact: contact.get("id") == id, self.contacts))
+        return result[0] if len(result) > 0 else None
