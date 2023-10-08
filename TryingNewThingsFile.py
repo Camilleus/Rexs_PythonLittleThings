@@ -23,3 +23,10 @@ class Contacts:
         result = list(
             filter(lambda contact: contact.get("id") == id, self.contacts))
         return result[0] if len(result) > 0 else None
+
+    def remove_contacts(self, id):
+        for contact in self.contacts:
+            if contact["id"] == id:
+                self.contacts.remove(contact)
+            else:
+                pass
