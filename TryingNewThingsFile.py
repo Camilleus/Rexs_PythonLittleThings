@@ -54,6 +54,11 @@ class Vector:
         else:
             return (self.coordinates.x * value, self.coordinates.y * value)
 
+    def __add__(self, vector):
+        new_x = self.coordinates.x + vector.coordinates.x
+        new_y = self.coordinates.y + vector.coordinates.y
+        return Vector(Point(new_x, new_y))
+
 
 p = Point(5, 5)
 print(p.x)
