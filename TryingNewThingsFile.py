@@ -101,6 +101,14 @@ class Iterable:
         self.vectors = [Vector(Point(randrange(0, max_points), randrange(
             0, max_points))) for _ in range(self.max_vectors)]
 
+    def __next__(self):
+        if self.current_index < self.max_vectors:
+            vector = self.vectors[self.current_index]
+            self.current_index += 1
+            return vector
+        else:
+            raise StopIteration
+
 
 class RandomVectors:
 
