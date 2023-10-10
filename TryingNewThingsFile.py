@@ -12,12 +12,18 @@ class Point:
         return self.__y
 
     @x.setter
-    def x(self, new_x):
-        self.__x = new_x
+    def x(self, x):
+        if type(x) == int or type(x) == float:
+            self.__x = x
+        else:
+            self.__x = None
 
     @y.setter
-    def y(self, new_y):
-        self.__y = new_y
+    def y(self, y):
+        if type(y) == int or type(y) == float:
+            self.__y = y
+        else:
+            self.__y = None
 
 
 p = Point(5, 5)
