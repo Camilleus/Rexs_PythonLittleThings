@@ -64,6 +64,12 @@ class Vector:
         new_y = self.coordinates.y - vector.coordinates.y
         return Vector(Point(new_x, new_y))
 
+    def __mul__(self, vector):
+        new_x = self.coordinates.x * vector.coordinates.x
+        new_y = self.coordinates.y * vector.coordinates.y
+        scalar = new_x + new_y
+        return scalar
+
 
 p = Point(5, 5)
 print(p.x)
