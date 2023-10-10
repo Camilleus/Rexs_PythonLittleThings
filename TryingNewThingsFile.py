@@ -48,6 +48,12 @@ class Vector:
     def __str__(self):
         return f'Vector({self[0]},{self[1]})'
 
+    def __call__(self, value=None):
+        if value is None:
+            return (self.coordinates.x, self.coordinates.y)
+        else:
+            return (self.coordinates.x * value, self.coordinates.y * value)
+
 
 p = Point(5, 5)
 print(p.x)
