@@ -93,6 +93,15 @@ class Vector:
         return self.len() >= vector.len()
 
 
+class Iterable:
+    def __init__(self, max_vectors, max_points):
+        self.max_vectors = max_vectors
+        self.max_points = max_points
+        self.current_index = 0
+        self.vectors = [Vector(Point(randrange(0, max_points), randrange(
+            0, max_points))) for _ in range(self.max_vectors)]
+
+
 class RandomVectors:
 
     def __init__(self, max_vectors=10, max_points=50):
