@@ -26,5 +26,10 @@ class Point:
             self.__y = None
 
 
+class Vector:
+    def __init__(self, coordinates: Point):
+        self.coordinates = coordinates
+
+
 p = Point(5, 5)
 print(p.x)
