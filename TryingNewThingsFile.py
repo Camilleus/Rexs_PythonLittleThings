@@ -59,6 +59,11 @@ class Vector:
         new_y = self.coordinates.y + vector.coordinates.y
         return Vector(Point(new_x, new_y))
 
+    def __sub__(self, vector):
+        new_x = self.coordinates.x - vector.coordinates.x
+        new_y = self.coordinates.y - vector.coordinates.y
+        return Vector(Point(new_x, new_y))
+
 
 p = Point(5, 5)
 print(p.x)
