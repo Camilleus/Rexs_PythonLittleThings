@@ -70,6 +70,10 @@ class Vector:
         scalar = new_x + new_y
         return scalar
 
+    def len(self):
+        len = (self.coordinates.x ** 2 + self.coordinates.y ** 2) ** 0.5
+        return len
+
 
 p = Point(5, 5)
 print(p.x)
