@@ -30,6 +30,18 @@ class Vector:
     def __init__(self, coordinates: Point):
         self.coordinates = coordinates
 
+    def __setitem__(self, index, value):
+        if index == 0:
+            self.coordinates.x = value
+        elif index == 1:
+            self.coordinates.y = value
+
+    def __getitem__(self, index):
+        if index == 0:
+            return self.coordinates.x
+        elif index == 1:
+            return self.coordinates.y
+
 
 p = Point(5, 5)
 print(p.x)
