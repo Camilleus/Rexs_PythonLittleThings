@@ -25,6 +25,9 @@ class Point:
         else:
             self.__y = None
 
+    def __str__(self):
+        return f'Point({self.x},{self.y})'
+
 
 class Vector:
     def __init__(self, coordinates: Point):
@@ -41,6 +44,9 @@ class Vector:
             return self.coordinates.x
         elif index == 1:
             return self.coordinates.y
+
+    def __str__(self):
+        return f'Vector({self[0]},{self[1]})'
 
 
 p = Point(5, 5)
