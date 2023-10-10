@@ -93,5 +93,15 @@ class Vector:
         return self.len() >= vector.len()
 
 
+class RandomVectors:
+
+    def __init__(self, max_vectors=10, max_points=50):
+        self.max_vectors = max_vectors
+        self.max_points = max_points
+
+    def __iter__(self):
+        return Iterable(self.max_vectors, self.max_points)
+
+
 p = Point(5, 5)
 print(p.x)
