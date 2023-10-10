@@ -71,8 +71,26 @@ class Vector:
         return scalar
 
     def len(self):
-        len = (self.coordinates.x ** 2 + self.coordinates.y ** 2) ** 0.5
-        return len
+        length = (self.coordinates.x ** 2 + self.coordinates.y ** 2) ** 0.5
+        return length
+
+    def __eq__(self, vector):
+        return self.len() == vector.len()
+
+    def __ne__(self, vector):
+        return self.len() != vector.len()
+
+    def __lt__(self, vector):
+        return self.len() < vector.len()
+
+    def __gt__(self, vector):
+        return self.len() > vector.len()
+
+    def __le__(self, vector):
+        return self.len() <= vector.len()
+
+    def __ge__(self, vector):
+        return self.len() >= vector.len()
 
 
 p = Point(5, 5)
