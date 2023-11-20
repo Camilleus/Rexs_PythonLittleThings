@@ -40,8 +40,8 @@ import time
 
 def factorize(numbers):
     with multiprocessing.Pool() as pool:
-        legit_numbers = [i for i in range(1, number + 1) if number % i == 0]
-        result = pool.map(legit_numbers, numbers)
+        result = pool.map(
+            lambda x: [i for i in range(1, x + 1) if x % i == 0], numbers)
     return result
 
 
