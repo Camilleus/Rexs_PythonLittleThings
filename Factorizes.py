@@ -39,9 +39,12 @@ import time
 
 
 def factorize(numbers):
+    def factorize_single(number):
+        return [i for i in range(1, number + 1) if number % i == 0]
+
     with multiprocessing.Pool() as pool:
-        result = pool.map(
-            lambda x: [i for i in range(1, x + 1) if x % i == 0], numbers)
+        result = pool.map(factorize_single, numbers)
+
     return result
 
 
@@ -57,7 +60,7 @@ def main():
     numbers = [128, 255, 99999, 10651060]
 
     parallel_result, parallel_time = time_measurement(
-        factorize, numbers)
+        factorize, numbers[0], numbers[1:])
 
     print(f"Parallel result: {parallel_result}")
     print(f"Parallel execution time: {parallel_time:.6f} seconds")
