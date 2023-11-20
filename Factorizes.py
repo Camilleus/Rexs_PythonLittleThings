@@ -43,3 +43,11 @@ def factorize(numbers):
     with multiprocessing.Pool() as pool:
         result = pool.map(legit_numbers, numbers)
     return result
+
+
+def time_measurement(func, *args):
+    start_time = time.time()
+    result = func(*args)
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    return result, elapsed_time
