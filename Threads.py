@@ -1,13 +1,13 @@
 Proces a wątek, IO bound/CPU bound, GIL
-​
+
 from concurrent.futures import ThreadPoolExecutor
 from threading import Barrier, Condition, Event, Thread, Timer, RLock, Semaphore
 import logging
 from time import sleep, time
-​
-​
+
+
 # klasa Thread, dziedziczenie, a klasowy i funkcyjny argument konstruktora
-​
+
 logging.basicConfig(level=logging.DEBUG, format='%(threadName)s %(message)s')
 
 
@@ -29,8 +29,8 @@ for i in range(10):
     thread = MySleepingThread(args=(f"Odpalony jako {i}",))
     thread.start()
 print("SKOŃCZYŁEM WYKONYWAĆ GŁÓWNY KOD PROGRAMU")
-​
-​
+ 
+ 
 class MyCustomClass:
     def __init__(self, delay: int):
         self.delay = delay
@@ -39,15 +39,15 @@ class MyCustomClass:
         logging.debug("Idę spać, narka!")
         sleep(self.delay)
         logging.debug("Pobudka!")
-​
+
 def go_to_sleep_for(delay_time):
     logging.debug("Idę spać, narka!")
     sleep(delay_time)
     logging.debug("Pobudka!")
-​
-​
+
+
 # metody join(), is_alive()
-​
+
 thread = Thread(target=go_to_sleep_for, args=(3,))
 thread.start()
 thread_2 = Thread(target=go_to_sleep_for, args=(2,))
@@ -59,9 +59,9 @@ while True:
         print("thread wciąż sobie pracuje")
     if thread_2.is_alive():
         print("thread_2 wciąż sobie pracuje")
-​
+
 # klasa TIMER
-​
+
 def say_hi():
     logging.debug("Hi!")
 
@@ -74,10 +74,10 @@ for timer in timers:
 timers[6].cancel()
 
 print("koniec programu!")
-​
-​
+
+
 # klasa Lock/RLock
-​
+
 def do_something(lock, delay):
     print("Zacząłem!")
     sleep(2)
@@ -93,10 +93,10 @@ threads = [Thread(target=do_something, args=(lock, 2)) for _ in range(10)]
 for thread in threads:
     thread.start()
 logging.debug("Started")
-​
-​
+
+
 # klasa Semaphore
-​
+
 def do_something(semaphore, delay):
     print("Zacząłem!")
     sleep(2)
@@ -112,10 +112,10 @@ threads = [Thread(target=do_something, args=(semaphore, 2)) for _ in range(10)]
 for thread in threads:
     thread.start()
 logging.debug("Started")
-​
-​
+
+
 # klasa Condition
-​
+
 def worker(condition: Condition):
     logging.debug('Worker ready to work')
     with condition:
@@ -150,10 +150,10 @@ worker_three.start()
 
 worker_four.start()
 boss.start()
-​
-​
+
+
 # klasa Event
-​
+
 def worker(event: Event):
     logging.debug('Worker ready to work')
     event.wait()
@@ -173,9 +173,9 @@ boss = Thread(name="boss", target=boss, args=(event,))
 boss.start()
 worker_one.start()
 worker_two.start()
-​
+
 # klasa Barrier
-​
+
 def worker(barrier: Barrier, delay: int):
     logging.debug('Worker ready to work')
     sleep(delay)
@@ -193,9 +193,9 @@ worker_one.start()
 worker_two.start()
 worker_three.start()
 worker_four.start()
-​
+
 # thread pools
-​
+
 def worker(number: int):
     logging.debug('Worker ready to work')
     sleep(2)
