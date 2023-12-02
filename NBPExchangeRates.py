@@ -27,7 +27,7 @@ from datetime import datetime, timedelta
 
 
 async def fetch_exchange_rates(days_ago):
-    base_url = "http://api.nbp.pl/api/exchangerates/tables/C/"
+    base_url = "https://api.nbp.pl/api/exchangerates/tables/a/"
     today = datetime.now()
     dates = [today - timedelta(days=i) for i in range(min(days_ago, 10))]
     results = []
@@ -35,7 +35,7 @@ async def fetch_exchange_rates(days_ago):
     async with aiohttp.ClientSession() as session:
         for date in dates:
             date_str = date.strftime("%d.%m.%Y")
-            url = f"{base_url}{date_str}"
+            url = f"{base_url}{date_str}?format=json"
 
             try:
                 async with session.get(url) as response:
