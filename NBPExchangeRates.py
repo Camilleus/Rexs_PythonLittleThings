@@ -21,50 +21,52 @@
 
 
 import aiohttp
+from datetime import datetime, timedelta
 import asyncio
 import sys
-from datetime import datetime, timedelta
 
 
 async def fetch_exchange_rates(days_ago):
-    base_url = "https://api.nbp.pl/api/exchangerates/tables/a/"
+    base_url = "http://api.nbp.pl/api/exchangerates/tables/C/"
     today = datetime.now()
     dates = [today - timedelta(days=i) for i in range(min(days_ago, 10))]
     results = []
 
     async with aiohttp.ClientSession() as session:
         for date in dates:
-            date_str = date.strftime("%d.%m.%Y")
-            url = f"{base_url}{date_str}?format=json"
-
+            date_str = date.strftime("%Y-%m-%d")
+            url = f"{base_url}{date_str}/?format=json"
             try:
                 async with session.get(url) as response:
-                    data = await response.json()
-                    if data:
-                        rates = {}
-                        for rate in data[0]['rates']:
-                            rates[rate['code']] = {
-                                'sale': rate['ask'], 'purchase': rate['bid']}
-                        result = {date_str: rates}
-                        results.append(result)
+                    if response.status == 200:
+                        try:
+                            data = await response.json()
+                            if data:
+                                rates = {}
+                                for rate in data[0]['rates']:
+                                    rates[rate['code']] = {
+                                        'sale': rate['ask'], 'purchase': rate['bid']}
+
+                                result = {date_str: rates}
+                                results.append(result)
+                        except aiohttp.ContentTypeError:
+                            print(f"Response for {date_str} is not JSON")
+                    else:
+                        print(
+                            f"Error fetching data for {date_str}: {response.status}")
             except Exception as e:
                 print(f"Error fetching data for {date_str}: {e}")
-
     return results
 
 
-def main():
-    if len(sys.argv) < 2:
-        print("Usage: python main.py <days>")
+async def main():
+    if len(sys.argv) != 2:
+        print("Usage: python NBPExchangeRates.py <number_of_days>")
         return
 
     days_ago = int(sys.argv[1])
-
-    loop = asyncio.get_event_loop()
-    results = loop.run_until_complete(fetch_exchange_rates(days_ago))
-
+    results = await fetch_exchange_rates(days_ago)
     print(results)
 
 
-if __name__ == "__main__":
-    main()
+asyncio.run(main())
