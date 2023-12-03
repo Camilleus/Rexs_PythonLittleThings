@@ -34,7 +34,7 @@ async def fetch_exchange_rates(days_ago):
 
     async with aiohttp.ClientSession() as session:
         for date in dates:
-            date_str = date.strftime("%Y-%m-%d")
+            date_str = date.strftime("%d.%m.%Y")
             url = f"{base_url}{date_str}/?format=json"
             try:
                 async with session.get(url) as response:
@@ -67,7 +67,6 @@ async def main():
     days_ago = int(sys.argv[1])
     results = await fetch_exchange_rates(days_ago)
     print(results)
-
 
 if __name__ == "__main__":
     asyncio.run(main())
