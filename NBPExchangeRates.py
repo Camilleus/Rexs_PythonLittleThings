@@ -39,13 +39,14 @@ async def fetch_exchange_rates(start_date, end_date):
                     try:
                         data = await response.json()
                         if data:
-                            rates = {}
-                            for rate in data[0]['rates']:
-                                if rate['code'] in ['USD', 'EUR']:
-                                    rates[rate['code']] = {
-                                        'sale': rate['ask'], 'purchase': rate['bid']}
-                            result = {start_date: rates}
-                            results.append(result)
+                            for date_data in data:
+                                rates = {}
+                                for rate in date_data['rates']:
+                                    if rate['code'] in ['USD', 'EUR']:
+                                        rates[rate['code']] = {
+                                            'sale': rate['ask'], 'purchase': rate['bid']}
+                                result = {date_data['effectiveDate']: rates}
+                                results.append(result)
                     except aiohttp.ContentTypeError:
                         print(f"Response is not JSON for {start_date}")
                 else:
