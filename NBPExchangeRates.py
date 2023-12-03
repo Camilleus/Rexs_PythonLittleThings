@@ -27,15 +27,15 @@ import sys
 
 
 async def fetch_exchange_rates(days_ago):
-    base_url = "http://api.nbp.pl/api/exchangerates/tables/C/"
+    base_url = "http://api.nbp.pl/api/exchangerates/tables/C/{start_date}/{end_date}/?format=json"
     today = datetime.now()
-    dates = [today - timedelta(days=i) for i in range(min(days_ago, 10))]
-    results = []
+    start_date = (today - timedelta(days=days_ago)).strftime("%Y-%m-%d")
+    end_date = today.strftime("%Y-%m-%d")
+    url = base_url.format(start_date=start_date, end_date=end_date)
 
     async with aiohttp.ClientSession() as session:
         for date in dates:
             date_str = date.strftime("%Y-%m-%d")
-            url = f"{base_url}{date_str}/?format=json"
             try:
                 async with session.get(url) as response:
                     if response.status == 200:
