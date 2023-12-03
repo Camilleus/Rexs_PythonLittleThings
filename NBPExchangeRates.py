@@ -44,9 +44,9 @@ async def fetch_exchange_rates(days_ago):
                             if data:
                                 rates = {}
                                 for rate in data[0]['rates']:
-                                    rates[rate['code']] = {
-                                        'sale': rate['ask'], 'purchase': rate['bid']}
-
+                                    if rate['code'] in ['USD', 'EUR']:
+                                        rates[rate['code']] = {
+                                            'sale': rate['ask'], 'purchase': rate['bid']}
                                 result = {date_str: rates}
                                 results.append(result)
                         except aiohttp.ContentTypeError:
