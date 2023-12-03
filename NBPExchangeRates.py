@@ -26,36 +26,41 @@ import asyncio
 import sys
 
 
-async def fetch_exchange_rates(start_date, end_date):
-    base_url = "http://api.nbp.pl/api/exchangerates/tables/C/{start_date}/{end_date}/?format=json"
-
-    url = base_url.format(start_date=start_date, end_date=end_date)
-    results = []
-
+async def fetch_data_from_nbp_api(url):
     async with aiohttp.ClientSession() as session:
         try:
             async with session.get(url) as response:
                 if response.status == 200:
-                    try:
-                        data = await response.json()
-                        if data:
-                            for date_data in data:
-                                rates = {}
-                                for rate in date_data['rates']:
-                                    if rate['code'] in ['USD', 'EUR']:
-                                        rates[rate['code']] = {
-                                            'sale': rate['ask'], 'purchase': rate['bid']}
-                                result = {date_data['effectiveDate']: rates}
-                                results.append(result)
-                    except aiohttp.ContentTypeError:
-                        print(f"Response is not JSON for {start_date}")
+                    return await response.json()
                 else:
-                    print(
-                        f"Error fetching data for {start_date}: {response.status}")
+                    print(f"Error fetching data: {response.status}")
         except Exception as e:
-            print(f"Error fetching data for {start_date}: {e}")
+            print(f"Error fetching data: {e}")
+    return None
 
-    return results
+
+def process_exchange_rate_data(date_data):
+    rates = {}
+    for rate in date_data['rates']:
+        if rate['code'] in ['USD', 'EUR']:
+            rates[rate['code']] = {
+                'sale': rate['ask'], 'purchase': rate['bid']}
+    return {date_data['effectiveDate']: rates}
+
+
+async def fetch_exchange_rates_for_date(start_date, end_date):
+    base_url = f"http://api.nbp.pl/api/exchangerates/tables/C/{start_date}/{end_date}/?format=json"
+    data = await fetch_data_from_nbp_api(base_url)
+    if data:
+        results = []
+        for date_data in data:
+            results.append(process_exchange_rate_data(date_data))
+        return results
+    return None
+
+
+async def fetch_exchange_rates(start_date, end_date):
+    return await fetch_exchange_rates_for_date(start_date, end_date)
 
 
 async def main():
@@ -68,7 +73,7 @@ async def main():
     end_date = today.strftime("%Y-%m-%d")
     start_date = (today - timedelta(days=days_ago)).strftime("%Y-%m-%d")
 
-    results = await fetch_exchange_rates(start_date, end_date)
+    results = await fetch_exchange_rates(start_date, end_date, )
     print(results)
 
 if __name__ == "__main__":
