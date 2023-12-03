@@ -26,13 +26,10 @@ import asyncio
 import sys
 
 
-async def fetch_exchange_rates(days_ago):
+async def fetch_exchange_rates(start_date, end_date):
     base_url = "http://api.nbp.pl/api/exchangerates/tables/C/{start_date}/{end_date}/?format=json"
-    today = datetime.now()
-    start_date = (today - timedelta(days=days_ago)).strftime("%Y-%m-%d")
-    end_date = today.strftime("%Y-%m-%d")
-    url = base_url.format(start_date=start_date, end_date=end_date)
 
+    url = base_url.format(start_date=start_date, end_date=end_date)
     results = []
 
     async with aiohttp.ClientSession() as session:
@@ -50,11 +47,13 @@ async def fetch_exchange_rates(days_ago):
                             result = {start_date: rates}
                             results.append(result)
                     except aiohttp.ContentTypeError:
-                        print(f"Response is not JSON")
+                        print(f"Response is not JSON for {start_date}")
                 else:
-                    print(f"Error fetching data: {response.status}")
+                    print(
+                        f"Error fetching data for {start_date}: {response.status}")
         except Exception as e:
-            print(f"Error fetching data: {e}")
+            print(f"Error fetching data for {start_date}: {e}")
+
     return results
 
 
@@ -64,9 +63,12 @@ async def main():
         return
 
     days_ago = int(sys.argv[1])
-    results = await fetch_exchange_rates(days_ago)
-    print(results)
+    today = datetime.now()
+    end_date = today.strftime("%Y-%m-%d")
+    start_date = (today - timedelta(days=days_ago)).strftime("%Y-%m-%d")
 
+    results = await fetch_exchange_rates(start_date, end_date)
+    print(results)
 
 if __name__ == "__main__":
     asyncio.run(main())
