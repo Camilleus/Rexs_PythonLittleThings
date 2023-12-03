@@ -33,29 +33,28 @@ async def fetch_exchange_rates(days_ago):
     end_date = today.strftime("%Y-%m-%d")
     url = base_url.format(start_date=start_date, end_date=end_date)
 
+    results = []
+
     async with aiohttp.ClientSession() as session:
-        for date in dates:
-            date_str = date.strftime("%Y-%m-%d")
-            try:
-                async with session.get(url) as response:
-                    if response.status == 200:
-                        try:
-                            data = await response.json()
-                            if data:
-                                rates = {}
-                                for rate in data[0]['rates']:
-                                    if rate['code'] in ['USD', 'EUR']:
-                                        rates[rate['code']] = {
-                                            'sale': rate['ask'], 'purchase': rate['bid']}
-                                result = {date_str: rates}
-                                results.append(result)
-                        except aiohttp.ContentTypeError:
-                            print(f"Response for {date_str} is not JSON")
-                    else:
-                        print(
-                            f"Error fetching data for {date_str}: {response.status}")
-            except Exception as e:
-                print(f"Error fetching data for {date_str}: {e}")
+        try:
+            async with session.get(url) as response:
+                if response.status == 200:
+                    try:
+                        data = await response.json()
+                        if data:
+                            rates = {}
+                            for rate in data[0]['rates']:
+                                if rate['code'] in ['USD', 'EUR']:
+                                    rates[rate['code']] = {
+                                        'sale': rate['ask'], 'purchase': rate['bid']}
+                            result = {start_date: rates}
+                            results.append(result)
+                    except aiohttp.ContentTypeError:
+                        print(f"Response is not JSON")
+                else:
+                    print(f"Error fetching data: {response.status}")
+        except Exception as e:
+            print(f"Error fetching data: {e}")
     return results
 
 
