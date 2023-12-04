@@ -27,15 +27,18 @@ import sys
 
 
 async def fetch_data_from_nbp_api(url):
-    async with aiohttp.ClientSession() as session:
-        try:
+    try:
+        async with aiohttp.ClientSession() as session:
             async with session.get(url) as response:
-                if response.status == 200:
+                if response.ok:
                     return await response.json()
                 else:
-                    print(f"Error fetching data: {response.status}")
-        except Exception as e:
-            print(f"Error fetching data: {e}")
+                    print(
+                        f"Error fetching data. HTTP Status: {response.status}")
+    except aiohttp.ClientError as ce:
+        print(f"AIOHTTP ClientError: {ce}")
+    except Exception as e:
+        print(f"Error fetching data: {e}")
     return None
 
 
@@ -49,13 +52,16 @@ def process_exchange_rate_data(date_data):
 
 
 async def fetch_exchange_rates_for_date(start_date, end_date):
-    base_url = f"http://api.nbp.pl/api/exchangerates/tables/C/{start_date}/{end_date}/?format=json"
-    data = await fetch_data_from_nbp_api(base_url)
-    if data:
-        results = []
-        for date_data in data:
-            results.append(process_exchange_rate_data(date_data))
-        return results
+    try:
+        base_url = f"http://api.nbp.pl/api/exchangerates/tables/C/{start_date}/{end_date}/?format=json"
+        data = await fetch_data_from_nbp_api(base_url)
+        if data:
+            results = []
+            for date_data in data:
+                results.append(process_exchange_rate_data(date_data))
+            return results
+    except Exception as e:
+        print(f"Error fetching exchange rates: {e}")
     return None
 
 
@@ -73,8 +79,11 @@ async def main():
     end_date = today.strftime("%Y-%m-%d")
     start_date = (today - timedelta(days=days_ago)).strftime("%Y-%m-%d")
 
-    results = await fetch_exchange_rates(start_date, end_date, )
-    print(results)
+    results = await fetch_exchange_rates(start_date, end_date)
+    if results:
+        print(results)
+    else:
+        print("Failed to fetch exchange rates.")
 
 if __name__ == "__main__":
     asyncio.run(main())
